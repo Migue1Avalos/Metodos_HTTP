@@ -24,7 +24,7 @@ def Agregar_Alumno():
     lista_alumnos.append(nuevo_alumno)
     return lista_alumnos
 
-@app.route('/lista_alumnos/<nombre>',methods=["DELETE"])
+@app.route('/lista_alumnos/<nombre>',methods=["DELETE"]) #Implementacion del metodo DELETE
 def Eliminar_Alumno(nombre):
     global lista_alumnos
     Alumno_eliminado = ""
