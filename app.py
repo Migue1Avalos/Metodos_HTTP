@@ -9,7 +9,7 @@ lista_alumnos = [{"nombre":"Miguel","mail":"abc@gmail.com","carrera":"Data Scien
 @app.route('/',methods = ['GET'])
 def Registro():
     return render_template("index.html")
-@app.route('/registo',methods = ['POST'])
+@app.route('/registro',methods = ['POST'])
 def Mostrar_Registro():
     name = request.form.get("name")
     mail = request.form.get("mail")
@@ -17,8 +17,8 @@ def Mostrar_Registro():
     id = request.form.get("id")
     if not name or not carrera or not mail or not id:
         return render_template("Error.html")
-    lista_alumnos.append(f"Registered: {name};  {mail};  {carrera}")
-    return redirect("/registrants")
+    lista_alumnos.append(f"Registered: {name};  {mail};  {carrera}; {id}")
+    return redirect("/registrantes")
 
 
 
