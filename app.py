@@ -18,7 +18,11 @@ def Mostrar_Registro():
     if not name or not carrera or not mail or not id:
         return render_template("Error.html")
     lista_alumnos.append(f"Registered: {name};  {mail};  {carrera}; {id}")
-    return redirect("/registrantes")
+    return redirect("/registro_alumnos")
+@app.route('/registros_alumnos')
+def registrantes():
+    return render_template("registrados.html", lista_alumnos = lista_alumnos)
+
 
 
 
