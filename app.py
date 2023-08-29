@@ -40,17 +40,32 @@ def Eliminar_Alumno(nombre):
         return "Nombre no encontrado"
 
 @app.route('/lista_alumnos/<nombre>',methods = ["PUT"])
-def Actualiza_Alumno(nombre):
+def Actualizacion_Alumno(nombre):
     global lista_alumnos
-    nueva_info = request.get_json
+    nueva_info = request.get_json()
+    alumno_actualizado = ""
     for alumno in lista_alumnos:
         if alumno["nombre"] == nombre:
-            
+            alumno_actualizado = alumno
+            break
+    if alumno_actualizado:
+        return alumno_actualizado.update(nueva_info)
+    else:
+        return "Nombre no encontrado"
 
-
-
-
-
+@app.route('/lista_alumnos/<nombre>',methods = ["PATCH"])
+def Actualizacion_parcial_Alumno(nombre):
+    global lista_alumnos
+    nueva_info = request.get_json()
+    alumno_actualizado = ""
+    for alumno in lista_alumnos:
+        if alumno["nombre"] == nombre:
+            alumno_actualizado = alumno
+            break
+    if alumno_actualizado:
+        return alumno_actualizado.update(nueva_info)
+    else:
+        return "Nombre no encontrado"
 
 
 if __name__ == '__main__':
