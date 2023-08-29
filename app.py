@@ -2,7 +2,9 @@ from flask import Flask,request
 
 app = Flask(__name__)
 
-lista_alumnos = [{"nombre":"Miguel","mail":"abc@gmail.com","carrera":"Data Science","id":123456},{"nombre":"Juan","mail":"erf@gmail.com","carera":"Ing.Civil","id":987654},{"nombre":"Maria","mail":"poi@gmail.com","carrera":"Ing.Ambiental","id":90345345}]
+lista_alumnos = [{"nombre":"Miguel","mail":"abc@gmail.com","carrera":"Data Science","id":123456},
+                 {"nombre":"Juan","mail":"erf@gmail.com","carera":"Ing.Civil","id":987654},
+                 {"nombre":"Maria","mail":"poi@gmail.com","carrera":"Ing.Ambiental","id":90345345}]
 
 @app.route('/lista_alumnos',methods = ['GET'])  # Implementacion del method GET
 def Mostrar_Alumnos():
@@ -36,6 +38,19 @@ def Eliminar_Alumno(nombre):
         return lista_alumnos.remove(Alumno_eliminado)
     else:
         return "Nombre no encontrado"
+
+@app.route('/lista_alumnos/<nombre>',methods = ["PUT"])
+def Actualiza_Alumno(nombre):
+    global lista_alumnos
+    nueva_info = request.get_json
+    for alumno in lista_alumnos:
+        if alumno["nombre"] == nombre:
+            
+
+
+
+
+
 
 
 if __name__ == '__main__':
